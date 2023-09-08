@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}
+
+
+<!-- Block Title  ---------------------------------------------------------------------------------------->
+{% block title %}
+	Clientes
+{% endblock title %}
+
+<!-- Block Header ---------------------------------------------------------------------------------------->
+{% block header %}
+{% endblock header %}
+
+
+<!-- Block Main - ---------------------------------------------------------------------------------------->
+{% block main %}
+	<div class="container">
+		<div class="row my-3">
+			<div class="col">
+				<div class="card">
+					<div class="card-header">
+						{{ accion }} Clientes
+					</div>
+					
+					<div class="card-body">
+						{% if form.errors %}
+							<div class="alert alert-danger alert-dismissible fade show mt-3">{{ form.errors }}</div>
+						{% endif %}
+						<form method="post">
+							{% csrf_token %}
+							<div class="row">
+								<div class="col">
+									<label for="Cliente" class="form-label">Nombre</label>
+									<input type="text" class="form-control" id="Cliente" name="nombre" placeholder="Nombre"
+										value="{{ form.nombre.value | default:'' }}" autocomplete="off">
+								</div>
+							</div>
+
+							<div class="row">
+								<div class="col">
+									<label for="domicilio" class="form-label">Domicilio</label>
+									<input type="text" class="form-control" id="domicilio" name="domicilio" placeholder="Domicilio"
+										value="{{ form.domicilio.value | default:'' }}" autocomplete="off">
+								</div>
+								<div class="col">
+									<label for="barrio" class="form-label">Barrio</label>
+									<input type="text" class="form-control" id="barrio" name="barrio" placeholder="Barrio"
+										value="{{ form.barrio.value | default:'' }}" autocomplete="off">
+								</div>
+							</div>
+
+							<div class="row">
+								<div class="col col-6">
+									<label for="Localidad" class="form-label">Localidad</label>
+									{{ form.idlocalidad }}
+								</div>
+								<div class="col col-6">
+									<label for="Zona" class="form-label">Zona</label>
+									{{ form.idzona }}
+								</div>
+							</div>
+							<div class="col col-6">
+								<label for="tipopersona" class="form-label">Tipo Personeria</label>
+								{{ form.idtipopersona }}
+							</div>
+							<div class="row">
+								<div class="col col-3">
+									<label for="tipodoc" class="form-label">Tipo de Documento</label>
+									{{ form.idtipodoc }}
+								</div>
+								<div class="col col-3">
+									<label for="Documento" class="form-label">Nro. Documento</label>
+									<input type="text" class="form-control" id="Documento" name="documento" placeholder="Nro. Documento"
+										value="{{ form.documento.value | default:'' }}" autocomplete="off">
+								</div>
+							</div>
+							<div class="row">
+								<div class="col col-3">
+									<label for="IVA" class="form-label">Situacion IVA</label>
+									{{ form.idcodiva }}
+								</div>
+								<div class="col col-3">
+									<label for="CUIT" class="form-label">Nro. CUIT</label>
+									<input type="text" class="form-control" id="CUIT" name="cuit" placeholder="Nro. CUIT"
+										value="{{ form.cuit.value | default:'' }}" autocomplete="off">
+								</div>
+								<div class="col col-3">
+									<label for="Ibruto" class="form-label">Ing. Bruto</label>
+									<input type="text" class="form-control" id="Ibruto" name="ingbruto" placeholder="Nro. IIBB"
+										value="{{ form.ingbruto.value | default:'' }}" autocomplete="off">
+								</div>
+							</div>
+							<div class="row">
+								<div class="col col-3">
+									<label for="Telefono" class="form-label">Telefono</label>
+									<input type="text" class="form-control" id="Telefono" name="telefono" placeholder="Telefono"
+										value="{{ form.telefono.value | default:'' }}" autocomplete="off">
+								</div>
+								<div class="col col-3">
+									<label for="Telefono2" class="form-label">Telefono</label>
+									<input type="text" class="form-control" id="Telefono2" name="telefono2" placeholder="Telefono"
+										value="{{ form.telefono2.value | default:'' }}" autocomplete="off">
+								</div>
+								<div class="col col-3">
+									<label for="Movil" class="form-label">Tel. Movil</label>
+									<input type="text" class="form-control" id="Movil" name="celular" placeholder="Tel. Movil"
+										value="{{ form.celular.value | default:'' }}" autocomplete="off">
+								</div>
+							</div>
+							<div class="row">
+								<div class="col col-6">
+									<label for="Email" class="form-label">Correo Electronico</label>
+									<input type="text" class="form-control" id="Email" name="email" placeholder="Correo Electronico"
+										value="{{ form.email.value | default:'' }}" autocomplete="off">
+								</div>
+								<div class="col col-6">
+									<label for="Email2" class="form-label">Correo Electronico Secundario</label>
+									<input type="text" class="form-control" id="Email2" name="email2" placeholder="Correo Electronico"
+										value="{{ form.email2.value | default:'' }}" autocomplete="off">
+								</div>
+							</div>
+							<div class="row">
+								<div class="col col-3">
+									<label for="Nacimiento" class="form-label">Fecha de Nacimiento</label>
+									<input type="date" class="form-control" id="Nacimiento" name="fnacimiento" placeholder="Fecha de Nacimiento"
+										value="{{ form.fnacimiento.value }}" autocomplete="off">
+								</div>
+								<div class="col">
+									<label for="transporte" class="form-label">Transporte</label>
+									<input type="text" class="form-control" id="transporte" name="transporte" placeholder="Transporte"
+										value="{{ form.transporte.value | default:'' }}" autocomplete="off">
+								</div>
+							</div>
+							<div class="col-md-6">
+								<div class="row">
+									<div class="col-md-6">
+										<label for="Sexo" class="form-label">Sexo</label>
+										{% for radio in form.sexo %}
+										<div class="radio">
+											{{ radio }}
+										</div>
+										{% endfor %}
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col col-6">
+									<label for="Actividad" class="form-label">Actividad</label>
+									{{ form.idactividad }}
+								</div>
+								<div class="col col-6">
+									<label for="PrecIB" class="form-label">Precepcion IIBB</label>
+									{{ form.idpercible }}
+								</div>
+							</div>
+							<div class="row">
+								<div class="col col-6">
+									<label for="Sucursal" class="form-label">Sucursal</label>
+									{{ form.idsucursal }}
+								</div>
+								<div class="col col-6">
+									<label for="Vendedor" class="form-label">Vendedor</label>
+									{{ form.idvendedor }}
+								</div>
+							</div>
+							<div class="row form-check mt-2">
+								<div class="col-md-6">
+									{{ form.vip }}
+									<label for="vip" class="form-check-label mx-2">Cliente VIP o Importante</label>
+								</div>
+								<div class="col-md-6">
+									{{ form.mayorista }} 
+									<label for="mayorista" class="form-check-label mx-2">Es Mayorista</label>
+								</div>
+								<div class="col-md-6">
+									{{ form.ctacte }} 
+									<label for="ctacte" class="form-check-label mx-2">Habilita Cuenta Corriente</label>
+								</div>
+							</div>
+							<div class="col col-2">
+								<label for="SubCuenta" class="form-label">Sub-Cuenta</label>
+								<input type="text" class="form-control" id="SubCuenta" name="subcuenta" placeholder="Sub Cuenta"
+									value="{{ form.subcuenta.value | default:'' }}" autocomplete="off">
+							</div>
+							<div class="row">
+								<div class="col">
+									<label for="Observacion" class="form-label">Observacion</label>
+									<input type="text" class="form-control" id="Observacion" name="observacion" placeholder="Observaciones"
+										value="{{ form.observacion.value }}" autocomplete="off">
+								</div>
+							</div>
+
+
+							<div class="mt-3">
+								<button type="submit" class="btn btn-primary">Guardar</button>
+								<a class="btn btn-secondary" href="{% url 'cliente_listar' %}">Salir</a>
+							</div>
+						</form>
+					</div> <!-- /End Body -->
+					
+					<div class="card-footer text-muted">
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock main %}
+
+<!-- Block Fotter ---------------------------------------------------------------------------------------->
+{% block footer %}
+{% endblock footer %}

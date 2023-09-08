@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}
+
+<!-- Block Title  ---------------------------------------------------------------------------------------->
+{% block title %}
+	Resumen Pendiente de Clientes
+{% endblock title %}
+
+<!-- Block Header ---------------------------------------------------------------------------------------->
+{% block header %}
+	{% include 'navbar.html' %}
+{% endblock header %}
+
+<!-- Block Main - ---------------------------------------------------------------------------------------->
+{% block main %}
+	<div class="container">
+		<div class="card border-light mb-3 mt-5">
+			<div class="card-header">Resumen Pendiente de Clientes</div>
+			<div class="card-body">
+				<div class="table-responsive mt-3">
+					<table class="table">
+						<thead class="table-primary">
+							<tr>
+								<th class="col-1">Fecha</th>
+								<th class="col-2">Comprobante</th>
+								<th class="col-1">Letra</th>
+								<th class="col-1">Numero</th>
+								<th class="col-1">Total</th>
+								<th class="col-1">Entrega</th>
+								<th class="col-2">Observacion</th>
+							</tr>
+						</thead>
+						<tbody>
+							{% for p in resumen %}
+							<tr>
+								<td>{{ p.fecha }}</td>
+								<td>{{ p.nombre }}</td>
+								<td>{{ p.letra }}</td>
+								<td>{{ p.numero }}</td>
+								<td>{{ p.total }}</td>
+								<td>{{ p.entrega }}</td>
+								<td>{{ p.observacion }}</td>
+							</tr>
+							{% endfor %}
+						</tbody>
+					</table>
+					{% include 'paginador.html' with entity=clientes paginator=paginator %}
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock main %}
+
+<!-- Block Fotter ---------------------------------------------------------------------------------------->
+{% block footer %}
+{% endblock footer %}

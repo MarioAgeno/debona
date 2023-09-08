@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}
+
+<!-- Block Title  ---------------------------------------------------------------------------------------->
+{% block title %}
+	DEBONA GROUP
+{% endblock title %}
+
+<!-- Block Header ---------------------------------------------------------------------------------------->
+{% block header %}
+	{% include 'navbar.html' %}
+{% endblock header %}
+
+<!-- Block Main - ---------------------------------------------------------------------------------------->
+{% block main %}
+	<div class="container">
+		<div class="card mt-3">
+			<div class="card-header">
+				Bienvenido a DEBONA ON Line!
+			</div>
+			
+			<div class="card-body">
+				<h4 class="card-title">Inicio</h4>
+				<p class="card-text">Estás en la página principal de la aplicación</p>
+				<h1 class="card-text">Sistema de Consultas de Neumaticos Debona</h1>
+			</div>
+			<div class="card-footer text-muted">
+				{{ fecha }}
+			</div>
+		</div>
+	</div>
+{% endblock main %}
+
+<!-- Block Fotter ---------------------------------------------------------------------------------------->
+{% block footer %}
+{% endblock footer %}

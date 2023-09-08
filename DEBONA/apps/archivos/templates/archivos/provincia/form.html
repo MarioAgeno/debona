@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}
+
+
+<!-- Block Title  ---------------------------------------------------------------------------------------->
+{% block title %}
+	Provincias
+{% endblock title %}
+
+<!-- Block Header ---------------------------------------------------------------------------------------->
+{% block header %}
+{% endblock header %}
+
+<!-- Block Main - ---------------------------------------------------------------------------------------->
+{% block main %}
+	<div class="container">
+		<div class="row my-3">
+			<div class="col">
+				<div class="card">
+					<div class="card-header">
+						{{ accion }} Provincia
+					</div>
+					
+					<div class="card-body">
+						{% if form.errors %}
+							<div class="alert alert-danger alert-dismissible fade show mt-3">{{ form.errors }}</div>
+						{% endif %}
+						<form method="post">
+							{% csrf_token %}
+							<div class="row">
+								<div class="col">
+									<label for="Provincia" class="form-label">Nombre</label>
+									<input type="text" class="form-control" id="Provincia" name="nombre" placeholder="Nombre"
+										value="{{ form.nombre.value | default:'' }}" autocomplete="off">
+								</div>
+							</div>
+
+							<div class="row">
+								<div class="col">
+									<label for="codAFIP" class="form-label">Cod.AFIP</label>
+									<input type="text" class="form-control" id="codAFIP" name="codAFIP" placeholder="Codigo AFIP"
+										value="{{ form.codAFIP.value | default:'' }}" autocomplete="off">
+								</div>
+							</div>
+
+							<div class="mt-3">
+								<button type="submit" class="btn btn-primary">Guardar</button>
+								<a class="btn btn-secondary" href="{% url 'provincia_listar' %}">Salir</a>
+							</div>
+						</form>
+					</div> <!-- /End Body -->
+					
+					<div class="card-footer text-muted">
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock main %}
+
+<!-- Block Fotter ---------------------------------------------------------------------------------------->
+{% block footer %}
+{% endblock footer %}
