@@ -99,6 +99,25 @@ def provincia_eliminar(request, id):
 	#-- Si es llamada esta vista con el método GET, mostrar la confirmación de la provincia a elimiar.
 	return render(request, 'archivos/provincia/eliminar.html', {'provincia': provincia})
 
+#-- Clientes lista para Editar (CRUD) -------------------------------------------------------------
+def cliente_listar_crud(request):
+	text = request.GET.get('buscar', '')
+	clientes_lst = Clientes.objects.filter(
+		Q(nombre__icontains=text) |
+		Q(cuit__icontains=text)
+		)
+	clientes_pag = Paginator(clientes_lst, 25)
+	page = request.GET.get('page', 1)
+	clientes = clientes_pag.get_page(page)
+	
+	#-- Preparar el contexto a pasar a la plantilla.
+	context = {
+		'clientes': clientes,
+		'paginator': clientes_pag,
+		'buscar': text
+	}
+	return render(request, 'archivos/cliente/listar_crud.html', context)
+
 
 #-- Clientes -----------------------------------------------------------------------
 #-- Vista que lista las Clientes
