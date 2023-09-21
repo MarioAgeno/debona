@@ -79,13 +79,13 @@ DATABASES = {
     'default': {
         'ENGINE': 'mssql',
         'NAME': 'Debona',
-        'USER': 'sa',
-        'PASSWORD': 'Italy2317',
-        #'HOST': 'HPMARIO\SQLEXPRESS',
-        'HOST': '186.189.231.233,10869\SQLEXPRESS',
+        #'USER': 'sa',
+        #'PASSWORD': 'Italy2317',
+        'HOST': 'PCMARIO\SQLEXPRESS',
+        #'HOST': '186.189.231.233,10869\SQLEXPRESS',
         'OPTIONS': {
             'driver': 'SQL Server Native Client 11.0',
-            'Trusted_Connection': 'No',
+            'Trusted_Connection': 'Yes',
             #'driver': 'ODBC Driver 11 for SQL Server',
             }
     }

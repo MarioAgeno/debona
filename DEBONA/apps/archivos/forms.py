@@ -1,5 +1,5 @@
 from django import forms
-from .models import Provincia, Clientes, ClientesSaldos
+from .models import Provincia, Clientes, ClientesSaldos, Lista
 
 class ProvinciaForm(forms.ModelForm):
     class Meta:
@@ -69,4 +69,17 @@ class ClienteSaldoForm(forms.ModelForm):
             #'idcliente',
             'nombre',
             'saldo'
+        ]
+
+class ListaForm(forms.ModelForm):
+    class Meta:
+        model = Lista
+        fields = [
+              'medida',
+              'cai',
+              'nombre',
+              'idfamilia',
+              'idmarcar',
+              'idmodelo',
+              'idestado'
         ]

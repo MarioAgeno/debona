@@ -145,7 +145,7 @@ def cliente_agregar(request, accion):
 		form = forms.ClienteForm(request.POST)
 		if form.is_valid():
 			form.save()
-			return redirect('cliente_listar')
+			return redirect('cliente_listar_crud')
 	else:
 		form = forms.ClienteForm()
 	return render(request, 'archivos/cliente/form.html', {'form': form, 'accion': accion})
@@ -159,7 +159,7 @@ def cliente_editar(request, id, accion):
 		form = forms.ClienteForm(request.POST, instance=cliente)
 		if form.is_valid():
 			form.save()
-			return redirect('cliente_listar')
+			return redirect('cliente_listar_crud')
 	return render(request, 'archivos/cliente/form.html', {'form': form, 'accion': accion})
 
 #-- Vista que permite Eliminar un Cliente
@@ -214,3 +214,64 @@ def clienteresumenpendiente_listar(request, id):
 		'paginator': resumen_pag
 	}
 	return render(request, 'archivos/cliente/clienteresumenpendiente_listar.html', context)
+
+
+#-- Lista de productos  -----------------------------------------------------------------------
+#-- Vista que lista los productos
+def lista_listar(request):
+	text = request.GET.get('buscar', '')
+	lista_lst = Lista.objects.filter(
+		Q(medida__icontains=text) |
+		Q(cai__icontains=text)
+		)
+	lista_pag = Paginator(lista_lst, 20)
+	page = request.GET.get('page', 1)
+	listas = lista_pag.get_page(page)
+	
+	#-- Preparar el contexto a pasar a la plantilla.
+	context = {
+		'listas': listas,
+		'paginator': lista_pag,
+		'buscar': text
+	}
+	
+	return render(request, 'archivos/lista/listar.html', context)
+
+#-- Vista que permiter Agregar un nuevo Producto
+def lista_agregar(request, accion):
+	if request.method == 'POST':
+		form = forms.ListaForm(request.POST)
+		
+		#-- Validar los datos.
+		if form.is_valid():
+			form.save()
+			return redirect('lista_listar')
+	else:
+		form = forms.ListaForm()
+	
+	return render(request, 'archivos/lista/form.html', {'form': form, 'accion': accion})
+
+#-- Vista que permite Modificar los datos de un Producto
+def lista_editar(request, id, accion):
+	lista = Lista.objects.get(id=id)
+	if request.method == 'GET':
+		form = forms.ListaForm(instance=lista)
+	else:
+		form = forms.ListaForm(request.POST, instance=lista)
+		
+		if form.is_valid():
+			form.save()
+			return redirect('lista_listar')
+	
+	return render(request, 'archivos/lista/form.html', {'form': form, 'accion': accion})
+
+#-- Vista que permite Eliminar un Producto de la Lista
+def lista_eliminar(request, id):
+	lista = Lista.objects.get(id=id)
+	if request.method == 'POST':
+		lista.delete()
+		
+		return redirect('lista_listar')
+	
+	#-- Si es llamada esta vista con el método GET, mostrar la confirmación de la provincia a elimiar.
+	return render(request, 'archivos/lista/eliminar.html', {'producto': lista})
