@@ -3,7 +3,7 @@ from django.urls import path
 from .views import provincia_listar, provincia_agregar, provincia_editar, provincia_eliminar
 from .views import cliente_listar, cliente_agregar, cliente_editar, cliente_eliminar, cliente_listar_crud
 from .views import clientesaldo_listar, clientesaldo_solo, clienteresumenpendiente_listar
-from .views import lista_listar, lista_agregar, lista_editar, lista_eliminar
+from .views import lista_listar, lista_agregar, lista_editar, lista_eliminar, stockmedida
 
 
 
@@ -18,6 +18,8 @@ urlpatterns = [
 	path('lista/agregar/<str:accion>/', lista_agregar, name="lista_agregar"),
 	path('lista/editar/<int:id>/<str:accion>/', lista_editar, name="lista_editar"),
 	path('lista/eliminar/<int:id>/', lista_eliminar, name='lista_eliminar'),
+	path('lista/stockmedida/<int:id>', stockmedida, name="stockmedida"),
+
 	#-- Clientes.
 	path('cliente/listar/', cliente_listar, name="cliente_listar"),
 	path('cliente/cliente_listar_crud/', cliente_listar_crud, name="cliente_listar_crud"),

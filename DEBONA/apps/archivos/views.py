@@ -270,8 +270,21 @@ def lista_eliminar(request, id):
 	lista = Lista.objects.get(id=id)
 	if request.method == 'POST':
 		lista.delete()
-		
 		return redirect('lista_listar')
 	
-	#-- Si es llamada esta vista con el método GET, mostrar la confirmación de la provincia a elimiar.
-	return render(request, 'archivos/lista/eliminar.html', {'producto': lista})
+	#-- Si es llamada esta vista con el método GET, mostrar la confirmación del producto a elimiar.
+	return render(request, 'archivos/lista/eliminar.html', {'lista': lista})
+
+#-- Stock por Medida -----------------------------------------------------------------------
+#-- Vista de Stock por Medida
+def stockmedida(request, id):
+	resumen_lst = stockMedidaView.objects.filter(idlista=id)
+	resumen_pag = Paginator(resumen_lst,25)
+	page = request.GET.get('page', 1)
+	resumen = resumen_pag.get_page(page)
+
+	context = {
+		'resumen': resumen,
+		'paginator': resumen_pag
+	}
+	return render(request, 'archivos/lista/stockmedida.html', context)

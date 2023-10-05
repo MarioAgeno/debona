@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}
+
+<!-- Block Title  ---------------------------------------------------------------------------------------->
+{% block title %}
+	Stock
+{% endblock title %}
+
+<!-- Block Header ---------------------------------------------------------------------------------------->
+{% block header %}
+	{% include 'navbar.html' %}
+{% endblock header %}
+
+<!-- Block Main - ---------------------------------------------------------------------------------------->
+{% block main %}
+	<div class="container">
+		<div class="card border-light mb-3 mt-5">
+			<div class="card-header">Stock del Productos</div>
+			<div class="card-body">
+				<div class="table-responsive mt-3">
+					<table class="table">
+						<thead class="table-primary">
+							<tr>
+								<th class="col-1">Medida</th>
+								<th class="col-5">Sucursal</th>
+								<th class="col-1">Stock</th>
+								<th class="col-2">Minimo</th>
+							</tr>
+						</thead>
+						<tbody>
+							{% for p in resumen %}
+							<tr>
+								<td>{{ p.medida }}</td>
+								<td>{{ p.nombre }}</td>
+								<td>{{ p.stock }}</td>
+								<td>{{ p.minimo }}</td>
+							</tr>
+							{% endfor %}
+						</tbody>
+					</table>
+					{% include 'paginador.html' with entity=listas paginator=paginator %}
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock main %}
+
+<!-- Block Fotter ---------------------------------------------------------------------------------------->
+{% block footer %}
+{% endblock footer %}

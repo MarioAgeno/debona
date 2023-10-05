@@ -38,6 +38,7 @@ admin.site.register(Tpercepib)
 admin.site.register(Treten)
 admin.site.register(Vendedor)
 admin.site.register(ClientesResumenPendiente)
+admin.site.register(stockMedidaView)
 
 #admin.site.register(Lista)
 @admin.register(Lista)

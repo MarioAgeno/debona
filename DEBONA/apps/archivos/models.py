@@ -526,3 +526,20 @@ class ClientesResumenPendiente(models.Model):
     
     def __str__(self):
         return self.fecha        
+
+
+class stockMedidaView(models.Model):
+    idlista = models.IntegerField()
+    medida = models.CharField(max_length=10)
+    nombre = models.CharField(max_length=30)
+    stock = models.IntegerField()
+    minimo = models.IntegerField()
+
+    class Meta:
+        managed = False
+        db_table = 'stockMedidaView'
+        verbose_name = ('Stock Actual')
+        ordering = ['nombre']
+    
+    def __str__(self):
+        return self.nombre 

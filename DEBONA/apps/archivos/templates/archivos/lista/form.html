@@ -4,7 +4,7 @@
 
 <!-- Block Title  ---------------------------------------------------------------------------------------->
 {% block title %}
-	Provincias
+	Productos
 {% endblock title %}
 
 <!-- Block Header ---------------------------------------------------------------------------------------->
@@ -18,7 +18,7 @@
 			<div class="col">
 				<div class="card">
 					<div class="card-header">
-						{{ accion }} Provincia
+						{{ accion }} Productos
 					</div>
 					
 					<div class="card-body">
@@ -29,23 +29,68 @@
 							{% csrf_token %}
 							<div class="row">
 								<div class="col">
-									<label for="Provincia" class="form-label">Nombre</label>
-									<input type="text" class="form-control" id="Provincia" name="nombre" placeholder="Nombre"
+									<label for="medida" class="form-label">Medida</label>
+									<input type="text" class="form-control" id="medida" name="medida" placeholder="Medida"
+										value="{{ form.medida.value | default:'' }}" autocomplete="off">
+								</div>
+
+								<div class="col">
+									<label for="cai" class="form-label">CAI</label>
+									<input type="text" class="form-control" id="cai" name="medida" placeholder="CAI"
+										value="{{ form.cai.value | default:'' }}" autocomplete="off">
+								</div>
+							</div>
+
+							<div class="row">
+								<div class="col">
+									<label for="Lista" class="form-label">Nombre</label>
+									<input type="text" class="form-control" id="Lista" name="nombre" placeholder="Nombre"
 										value="{{ form.nombre.value | default:'' }}" autocomplete="off">
 								</div>
 							</div>
 
 							<div class="row">
 								<div class="col">
-									<label for="codAFIP" class="form-label">Cod.AFIP</label>
-									<input type="text" class="form-control" id="codAFIP" name="codAFIP" placeholder="Codigo AFIP"
-										value="{{ form.codAFIP.value | default:'' }}" autocomplete="off">
+									<label for="costo" class="form-label">Costo</label>
+									<input type="text" class="form-control" id="costo" name="costo" placeholder="Costo"
+										value="{{ form.costo.value | default:'' }}" autocomplete="off">
+								</div>
+								<div class="col">
+									<label for="aliciva" class="form-label">Alicuota IVA</label>
+									<input type="text" class="form-control" id="aliciva" name="aliciva" placeholder="Alicuota IVA"
+										value="{{ form.aliciva.value | default:'' }}" autocomplete="off">
+								</div>
+								<div class="col">
+									<label for="precio" class="form-label">Precio</label>
+									<input type="text" class="form-control" id="precio" name="precio" placeholder="Precio"
+										value="{{ form.precio.value | default:'' }}" autocomplete="off">
+								</div>
+							</div>
+
+							<div class="row">
+								<div class="col">
+									<label for="marca" class="form-label">Marca</label>
+									{{ form.idmarcar }}
+								</div>
+								<div class="col">
+									<label for="modelo" class="form-label">Modelo</label>
+									{{ form.idmodelo }}
+								</div>
+								<div class="col">
+									<label for="Familia" class="form-label">Familia</label>
+									{{ form.idfamilia }}
+								</div>
+							</div>
+
+							<div>
+								<div class="col">
+									<label for="idestado" class="form-label">Estado</label>
+									{{ form.idestado }}
 								</div>
 							</div>
 
 							<div class="mt-3">
-								<button type="submit" class="btn btn-primary">Guardar</button>
-								<a class="btn btn-secondary" href="{% url 'provincia_listar' %}">Salir</a>
+								<a class="btn btn-secondary" href="{% url 'lista_listar' %}">Salir</a>
 							</div>
 						</form>
 					</div> <!-- /End Body -->

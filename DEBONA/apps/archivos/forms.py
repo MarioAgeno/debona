@@ -1,5 +1,5 @@
 from django import forms
-from .models import Provincia, Clientes, ClientesSaldos, Lista
+from .models import Provincia, Clientes, ClientesSaldos, Lista, stockMedidaView
 
 class ProvinciaForm(forms.ModelForm):
     class Meta:
@@ -82,4 +82,14 @@ class ListaForm(forms.ModelForm):
               'idmarcar',
               'idmodelo',
               'idestado'
+        ]
+
+class stockMedidaViewForm(forms.ModelForm):
+    class Meta:
+        model = stockMedidaView
+        fields = [
+            'idlista',
+            'stock',
+            'nombre',
+            'minimo'
         ]

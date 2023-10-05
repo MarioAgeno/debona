@@ -4,7 +4,7 @@
 
 <!-- Block Title  ---------------------------------------------------------------------------------------->
 {% block title %}
-	Provincias
+	Productos
 {% endblock title %}
 
 <!-- Block Header ---------------------------------------------------------------------------------------->
@@ -17,14 +17,14 @@
 		{% csrf_token %}
 		<div class="card text-center col-md-6 offset-md-3">
 			<div class="card-header">
-				Eliminar Provincia
+				Eliminar Productos
 			</div>
 			<div class="card-body">
 				<h5 class="card-title">Atención!</h5>
-				<p class="card-text">¿Está seguro de eliminar la provincia: <strong>{{ provincia }}</strong>?</p>
+				<p class="card-text">¿Está seguro de eliminar el producto <strong>{{ nombre }}</strong>?</p>
 				
 				<button class="btn btn-danger" type="submit">Eliminar</button>
-				<a class="btn btn-outline-secondary" href="{% url 'provincia_listar' %}" role="button">Cancelar</a>
+				<a class="btn btn-outline-secondary" href="{% url 'lista_listar' %}" role="button">Cancelar</a>
 			</div>
 		</div>
 	</form>
