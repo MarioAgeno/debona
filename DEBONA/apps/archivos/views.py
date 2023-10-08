@@ -278,13 +278,13 @@ def lista_eliminar(request, id):
 #-- Stock por Medida -----------------------------------------------------------------------
 #-- Vista de Stock por Medida
 def stockmedida(request, id):
-	resumen_lst = stockMedidaView.objects.filter(idlista=id)
-	resumen_pag = Paginator(resumen_lst,25)
+	stock_lst = stockMedidaView.objects.filter(id=id)
+	stock_pag = Paginator(stock_lst,15)
 	page = request.GET.get('page', 1)
-	resumen = resumen_pag.get_page(page)
+	stocks = stock_pag.get_page(page)
 
 	context = {
-		'resumen': resumen,
-		'paginator': resumen_pag
+		'stocks': stocks,
+		'paginator': stock_pag
 	}
 	return render(request, 'archivos/lista/stockmedida.html', context)

@@ -88,8 +88,9 @@ class stockMedidaViewForm(forms.ModelForm):
     class Meta:
         model = stockMedidaView
         fields = [
-            'idlista',
+            'id',
             'stock',
             'nombre',
-            'minimo'
+            'minimo',
+            'estado'
         ]

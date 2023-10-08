@@ -81,7 +81,7 @@ DATABASES = {
         'NAME': 'Debona',
         #'USER': 'sa',
         #'PASSWORD': 'Italy2317',
-        'HOST': 'HPMARIO\SQLEXPRESS',
+        'HOST': 'PCMARIO\SQLEXPRESS',
         #'HOST': '186.189.231.233,10869\SQLEXPRESS',
         'OPTIONS': {
             'driver': 'SQL Server Native Client 11.0',

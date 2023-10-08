@@ -19,7 +19,6 @@ urlpatterns = [
 	path('lista/editar/<int:id>/<str:accion>/', lista_editar, name="lista_editar"),
 	path('lista/eliminar/<int:id>/', lista_eliminar, name='lista_eliminar'),
 	path('lista/stockmedida/<int:id>', stockmedida, name="stockmedida"),
-
 	#-- Clientes.
 	path('cliente/listar/', cliente_listar, name="cliente_listar"),
 	path('cliente/cliente_listar_crud/', cliente_listar_crud, name="cliente_listar_crud"),

@@ -529,17 +529,19 @@ class ClientesResumenPendiente(models.Model):
 
 
 class stockMedidaView(models.Model):
-    idlista = models.IntegerField()
+    id = models.IntegerField(primary_key=True)
     medida = models.CharField(max_length=10)
+    idsucursal = models.IntegerField()
     nombre = models.CharField(max_length=30)
     stock = models.IntegerField()
     minimo = models.IntegerField()
+    estado = models.CharField(max_length=30)
 
     class Meta:
         managed = False
         db_table = 'stockMedidaView'
         verbose_name = ('Stock Actual')
-        ordering = ['nombre']
+        ordering = ['idsucursal']
     
     def __str__(self):
         return self.nombre 
