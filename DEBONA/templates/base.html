@@ -1,6 +1,7 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
 	<title>
 		{% block title %}
@@ -19,6 +20,17 @@
 
 <body>
 	<header>
+		<div class="container-fluid">
+			<div class="row sf-logo">
+				<div class="col-sm-2 col-xs-1">&nbsp;</div>
+				<div class="col-sm-2 col-xs-2">
+					<img src="{% static 'img/logo-neumatico-debona.png' %}" alt="Imagen Empresa" />
+				</div>
+				<div class="col-sm-4 col-xs-4">&nbsp;</div>
+				<div class="col-sm-2 col-xs-1">&nbsp;</div>
+			</div>
+		</div>
+	
 		{% block header %}
 			Este es el header
 		{% endblock header %}

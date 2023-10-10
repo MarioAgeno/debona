@@ -1,5 +1,6 @@
 from django.urls import path
 
+
 from .views import provincia_listar, provincia_agregar, provincia_editar, provincia_eliminar
 from .views import cliente_listar, cliente_agregar, cliente_editar, cliente_eliminar, cliente_listar_crud
 from .views import clientesaldo_listar, clientesaldo_solo, clienteresumenpendiente_listar

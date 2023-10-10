@@ -277,6 +277,10 @@ def lista_eliminar(request, id):
 
 #-- Stock por Medida -----------------------------------------------------------------------
 #-- Vista de Stock por Medida
+
+#	stock_lst = stockMedidaView.objects.filter(id=id)
+#    stock_lst = stockMedidaView.objects.select_related('lista').get(id=id)
+
 def stockmedida(request, id):
 	stock_lst = stockMedidaView.objects.filter(id=id)
 	stock_pag = Paginator(stock_lst,15)
@@ -288,3 +292,4 @@ def stockmedida(request, id):
 		'paginator': stock_pag
 	}
 	return render(request, 'archivos/lista/stockmedida.html', context)
+
